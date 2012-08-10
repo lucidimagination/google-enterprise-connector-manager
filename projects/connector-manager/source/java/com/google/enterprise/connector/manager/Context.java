@@ -995,7 +995,7 @@ public class Context {
     }
 
     // Lock down the manager at this point.
-    props.put(MANAGER_LOCKED_PROPERTY_KEY, Boolean.TRUE.toString());
+    //props.put(MANAGER_LOCKED_PROPERTY_KEY, Boolean.TRUE.toString());
     try {
       PropertiesUtils.storeToFile(props, propFile,
           CONNECTOR_MANGER_CONFIG_HEADER);
@@ -1102,15 +1102,16 @@ public class Context {
    */
   public boolean getIsManagerLocked() {
     initApplicationContext();
-    String isManagerLocked = getProperty(MANAGER_LOCKED_PROPERTY_KEY, null);
-    if (isManagerLocked != null) {
-      return Boolean.valueOf(isManagerLocked).booleanValue();
-    }
-    // Consider older, but uninitialized properties files to be unlocked.
-    if (propertiesVersion < 2 && "localhost".equals(getGsaFeedHost())) {
-      return false;
-    }
-    return true;
+    return false;
+//    String isManagerLocked = getProperty(MANAGER_LOCKED_PROPERTY_KEY, null);
+//    if (isManagerLocked != null) {
+//      return Boolean.valueOf(isManagerLocked).booleanValue();
+//    }
+//    // Consider older, but uninitialized properties files to be unlocked.
+//    if (propertiesVersion < 2 && "localhost".equals(getGsaFeedHost())) {
+//      return false;
+//    }
+//    return true;
   }
 
   /**

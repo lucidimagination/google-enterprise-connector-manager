@@ -133,11 +133,12 @@
     <servlet-class>com.google.enterprise.connector.servlet.GetConnectorStatus</servlet-class>
   </servlet>
 
+<!-- 
   <servlet>
     <servlet-name>GetConnectorServingStatus</servlet-name>
     <servlet-class>com.google.enterprise.connector.servlet.GetConnectorServingStatus</servlet-class>
   </servlet>
-
+ -->
   <servlet>
     <servlet-name>RestartConnectorTraversal</servlet-name>
     <servlet-class>com.google.enterprise.connector.servlet.RestartConnectorTraversal</servlet-class>
@@ -158,6 +159,7 @@
     <servlet-class>com.google.enterprise.connector.servlet.Authorization</servlet-class>
   </servlet>
 
+<!-- 
   <servlet>
     <servlet-name>HelloClientFromGSA</servlet-name>
     <servlet-class>com.google.enterprise.connector.servlet.HelloClientFromGSA</servlet-class>
@@ -177,7 +179,7 @@
     <servlet-name>SetScheduleNoGSA</servlet-name>
     <servlet-class>com.google.enterprise.connector.servlet.SetScheduleNoGSA</servlet-class>
   </servlet>
-
+ -->
   <servlet>
     <servlet-name>StartUp</servlet-name>
     <servlet-class>com.google.enterprise.connector.servlet.StartUp</servlet-class>
@@ -277,10 +279,12 @@
     <url-pattern>/getConnectorStatus</url-pattern>
   </servlet-mapping>
 
+<!-- 
   <servlet-mapping>
     <servlet-name>GetConnectorServingStatus</servlet-name>
     <url-pattern>/getConnectorServingStatus</url-pattern>
   </servlet-mapping>
+-->
 
   <servlet-mapping>
     <servlet-name>RestartConnectorTraversal</servlet-name>
@@ -302,6 +306,7 @@
     <url-pattern>/authorization</url-pattern>
   </servlet-mapping>
 
+<!-- 
   <servlet-mapping>
     <servlet-name>HelloClientFromGSA</servlet-name>
     <url-pattern>/HelloClientFromGSA</url-pattern>
@@ -321,7 +326,7 @@
     <servlet-name>SetScheduleNoGSA</servlet-name>
     <url-pattern>/setScheduleTest</url-pattern>
   </servlet-mapping>
-
+ -->
   <servlet-mapping>
     <servlet-name>StartUp</servlet-name>
     <url-pattern>/startUp</url-pattern>
@@ -336,5 +341,9 @@
     <servlet-name>RemoveConnector</servlet-name>
     <url-pattern>/removeConnector</url-pattern>
   </servlet-mapping>
+
+  <listener>
+      <listener-class>com.lucid.crawl.gcm.ForceSLF4JListener</listener-class>
+  </listener>
 
 </web-app>

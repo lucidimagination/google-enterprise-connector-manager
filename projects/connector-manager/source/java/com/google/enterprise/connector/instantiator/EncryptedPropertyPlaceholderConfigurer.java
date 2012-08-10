@@ -343,13 +343,16 @@ public class EncryptedPropertyPlaceholderConfigurer extends
       Key secretKey = getSecretKey();
       Cipher decryptor = Cipher.getInstance(keyStoreCryptoAlgo);
       decryptor.init(Cipher.DECRYPT_MODE, secretKey);
-
       // Decode base64 to get bytes
       byte[] dec = Base64.decode(cipherText);
-      // Decrypt
-      byte[] utf8 = decryptor.doFinal(dec);
-      // Decode using utf-8
-      return new String(utf8, "UTF8");
+      if (dec.length > 0) {
+        // Decrypt
+        byte[] utf8 = decryptor.doFinal(dec);
+        // Decode using utf-8
+        return new String(utf8, "UTF8");
+      } else {
+        return new String(new byte[0], "UTF8");
+      }
     } catch (NoSuchAlgorithmException e) {
       throw logAndThrow(DECRYPT_MSG, name,
                         "provider does not have algorithm", e);
@@ -383,11 +386,7 @@ public class EncryptedPropertyPlaceholderConfigurer extends
   private static RuntimeException logAndThrow(String prefix, String name,
                                               String suffix, Exception e) {
     String msg = prefix + name + ((suffix == null) ? "" : ( ": " + suffix));
-    if (LOGGER.isLoggable(Level.FINEST)) {
-      LOGGER.log(Level.SEVERE, msg, e);
-    } else {
-      LOGGER.severe(msg);
-    }LOGGER.severe(msg);
+    LOGGER.log(Level.SEVERE, msg, e);
     return new RuntimeException(msg);
   }
 }

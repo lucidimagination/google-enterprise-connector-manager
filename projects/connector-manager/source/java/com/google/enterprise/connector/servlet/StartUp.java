@@ -20,6 +20,7 @@ import com.google.enterprise.connector.instantiator.EncryptedPropertyPlaceholder
 import com.google.enterprise.connector.logging.NDC;
 import com.google.enterprise.connector.manager.Context;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -42,6 +43,8 @@ import org.springframework.web.context.support.XmlWebApplicationContext;
 public class StartUp extends HttpServlet {
   private static final Logger LOGGER =
       Logger.getLogger(StartUp.class.getName());
+
+  File configDir = new File(new File(System.getProperty("lucidworksConfHome")),"gcm");
 
   @Override
   public void init() throws ServletException {
@@ -133,7 +136,7 @@ public class StartUp extends HttpServlet {
     ac.refresh();
 
     Context context = Context.getInstance();
-    context.setServletContext(ac, servletContext.getRealPath("/WEB-INF"));
+    context.setServletContext(ac, configDir.getAbsolutePath());
     context.start();
   }
 
@@ -150,14 +153,6 @@ public class StartUp extends HttpServlet {
    */
   private String getRealPath(final ServletContext servletContext, String name)
       throws IOException {
-    return ServletUtil.getRealPath(name,
-        new Function<String, String>() {
-          public String apply(String path) {
-            // If servlet container cannot translated the virtual path to a
-            // real path, so use the supplied path.
-            String realPath = servletContext.getRealPath("/WEB-INF/" + path);
-            return (realPath == null) ? path : realPath;
-          }
-        });
+    return new File(configDir, name).getAbsolutePath();
   }
 }

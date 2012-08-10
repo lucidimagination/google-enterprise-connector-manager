@@ -110,13 +110,13 @@ public class ServletDump {
     out.close();
 
     String dumpStr = stringWriter.getBuffer().toString();
-    if (LOGGER.isLoggable(Level.FINE)) {
-      LOGGER.fine("HttpRequest handled by "
-                  + sun.reflect.Reflection.getCallerClass(2).getName()
-                  + "\ncalled by "
-                  + sun.reflect.Reflection.getCallerClass(3).getName()
-                  + "\n" + dumpStr);
-    }
+//    if (LOGGER.isLoggable(Level.FINE)) {
+//      LOGGER.fine("HttpRequest handled by "
+//                  + sun.reflect.Reflection.getCallerClass(2).getName()
+//                  + "\ncalled by "
+//                  + sun.reflect.Reflection.getCallerClass(3).getName()
+//                  + "\n" + dumpStr);
+//    }
 
     // Now stuff it out to the response.
     out = res.getWriter();

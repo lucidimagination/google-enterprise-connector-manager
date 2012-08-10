@@ -5,15 +5,16 @@
   <import resource="documentFilters.xml"/>
 
   <bean id="ApplicationContextProperties" class="java.lang.String">
-    <constructor-arg value="/WEB-INF/applicationContext.properties"/>
+    <constructor-arg value="${applicationContext.properties}"/>
   </bean>
 
   <bean id="EncryptedPropertyPlaceholderConfigurer"
         class="com.google.enterprise.connector.instantiator.EncryptedPropertyPlaceholderConfigurer">
-    <property name="location" ref="ApplicationContextProperties"/>
+    <property name="location" value="file:${lucidworksConfHome}/gcm/applicationContext.properties"/>
     <!-- Default values for some properties -->
     <property name="properties">
       <props>
+        <prop key="applicationContext.properties">file:${lucidworksConfHome}/gcm/applicationContext.properties</prop>
         <prop key="feedLoggingLevel">OFF</prop>
 
         <!-- Default Feeder gate URL protocol on a GSA. -->
@@ -50,9 +51,9 @@
         <!-- Feed logging configuration.
              TODO: [Issue 163] These should be moved to logging.properties.
         -->
-        <prop key="feed.logging.FileHandler.pattern">${catalina.base}/logs/google-connectors.feed%g.log</prop>
-        <prop key="feed.logging.FileHandler.limit">52428800</prop>
-        <prop key="feed.logging.FileHandler.count">10</prop>
+        <prop key="feed.logging.FileHandler.pattern">${lucidworksLogsHome}/google-connectors.feed%g.log</prop>
+        <prop key="feed.logging.FileHandler.limit">1048576</prop>
+        <prop key="feed.logging.FileHandler.count">3</prop>
 
         <!-- The target number of items to be returned per traversal batch. -->
         <prop key="traversal.batch.size">500</prop>
@@ -78,7 +79,7 @@
 
         <!-- JDBC DataSource configuration. -->
         <prop key="jdbc.datasource.type">EmbeddedH2</prop>
-        <prop key="jdbc.datasource.h2.url">jdbc:h2:${catalina.base}/webapps/connector-manager/WEB-INF/connector_manager.dbstore/connector-manager;AUTO_SERVER=TRUE;TRACE_LEVEL_FILE=1;MVCC=TRUE;CACHE_SIZE=131072;MAX_OPERATION_MEMORY=0</prop>
+        <prop key="jdbc.datasource.h2.url">jdbc:h2:${lucidworksDataHome}/connector_manager.dbstore/connector-manager;AUTO_SERVER=FALSE;TRACE_LEVEL_FILE=1;MVCC=TRUE;CACHE_SIZE=131072;MAX_OPERATION_MEMORY=0</prop>
         <prop key="jdbc.datasource.h2.user">sa</prop>
         <prop key="jdbc.datasource.h2.password"></prop>
 
