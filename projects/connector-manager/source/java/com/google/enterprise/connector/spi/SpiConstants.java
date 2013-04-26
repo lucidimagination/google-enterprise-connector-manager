@@ -362,7 +362,7 @@ public class SpiConstants {
    * Enum for action types.
    */
   public enum ActionType {
-    ADD("add"), DELETE("delete"), ERROR("error"), SKIPPED("skipped");
+    ADD("add"), DELETE("delete"), ERROR("error"), FORBID("forbid"), SKIPPED("skipped");
 
     private final String tag;
 

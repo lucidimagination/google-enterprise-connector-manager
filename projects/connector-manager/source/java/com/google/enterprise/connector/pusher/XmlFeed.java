@@ -330,7 +330,7 @@ public class XmlFeed extends ByteArrayOutputStream implements FeedData {
       actionType = ActionType.findActionType(action);
       if (actionType == ActionType.ADD) {
         XmlUtils.xmlAppendAttr(XML_ACTION, actionType.toString(), prefix);
-      } else if (actionType == ActionType.DELETE) {
+      } else if (actionType == ActionType.DELETE || actionType == ActionType.FORBID) {
         XmlUtils.xmlAppendAttr(XML_ACTION, actionType.toString(), prefix);
         metadataAllowed = false;
         contentAllowed = false;
