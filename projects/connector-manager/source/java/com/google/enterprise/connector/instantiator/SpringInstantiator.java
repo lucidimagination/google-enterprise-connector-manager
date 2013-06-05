@@ -260,6 +260,12 @@ public class SpringInstantiator implements Instantiator {
   }
 
   /* @Override */
+  public void stopTraversal(String connectorName)
+      throws ConnectorNotFoundException {
+    getConnectorCoordinator(connectorName).stopTraversal();
+  }
+
+  /* @Override */
   public void setConnectorSchedule(String connectorName, Schedule schedule)
       throws ConnectorNotFoundException {
     getConnectorCoordinator(connectorName).setConnectorSchedule(schedule);

@@ -150,6 +150,11 @@
   </servlet>
 
   <servlet>
+    <servlet-name>StopTraversal</servlet-name>
+    <servlet-class>com.google.enterprise.connector.servlet.StopTraversal</servlet-class>
+  </servlet>
+
+  <servlet>
     <servlet-name>Authenticate</servlet-name>
     <servlet-class>com.google.enterprise.connector.servlet.Authenticate</servlet-class>
   </servlet>
@@ -294,6 +299,11 @@
   <servlet-mapping>
     <servlet-name>SetSchedule</servlet-name>
     <url-pattern>/setSchedule</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>StopTraversal</servlet-name>
+    <url-pattern>/stopTraversal</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>

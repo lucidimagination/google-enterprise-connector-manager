@@ -198,6 +198,9 @@ public interface Manager {
   public Collection<AuthorizationResponse> authorizeDocids(String connectorName,
       List<String> docidList, AuthenticationIdentity identity);
 
+  public void stopTraversal(String connectorName)
+      throws ConnectorNotFoundException;
+
   /**
    * Set schedule for a given Connector.
    *

@@ -230,6 +230,12 @@ public class ProductionManager implements Manager {
   }
 
   /* @Override */
+  public void stopTraversal(String connectorName)
+      throws ConnectorNotFoundException {
+    instantiator.stopTraversal(connectorName);
+  }
+
+  /* @Override */
   public void setSchedule(String connectorName, String schedule)
       throws ConnectorNotFoundException, PersistentStoreException {
     instantiator.setConnectorSchedule(connectorName,

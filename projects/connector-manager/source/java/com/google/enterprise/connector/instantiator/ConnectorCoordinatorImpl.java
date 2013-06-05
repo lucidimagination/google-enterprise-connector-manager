@@ -336,6 +336,24 @@ class ConnectorCoordinatorImpl implements
     return traversalSchedule;
   }
 
+  private volatile boolean stopped = false;
+
+  // TODO Should we check if instance is running ?
+  public void stopTraversal() throws ConnectorNotFoundException {
+    if (instanceInfo != null
+        && instanceInfo.getConnector() instanceof ConnectorShutdownAware) {
+      ConnectorShutdownAware csa =
+        (ConnectorShutdownAware) (instanceInfo.getConnector());
+      try {
+        LOGGER.info("Stopping connector " + name);
+        csa.shutdown();
+      } catch (Exception e) {
+        LOGGER.log(Level.WARNING, "Problem shutting down connector " + name
+            + " while processing stop request.", e);
+      }
+    }
+  }
+
   /**
    * Sets the traversal {@link Schedule} for the {@link Connector}.
    *
@@ -592,6 +610,9 @@ class ConnectorCoordinatorImpl implements
     if (taskHandle != null && !taskHandle.isDone()) {
       return false;
     }
+
+    // Do we have to stop right now ?
+    if (stopped) return false;
 
     // Don't run if we have postponed traversals.
     if (clock.getTimeMillis() < traversalDelayEnd) {

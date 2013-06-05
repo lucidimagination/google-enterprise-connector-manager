@@ -170,6 +170,9 @@ public interface Instantiator {
   public Configuration getConnectorConfiguration(String connectorName)
       throws ConnectorNotFoundException;
 
+  public void stopTraversal(String connectorName)
+      throws ConnectorNotFoundException;
+
   /**
    * Sets the {@link Schedule} of a named connector.
    *

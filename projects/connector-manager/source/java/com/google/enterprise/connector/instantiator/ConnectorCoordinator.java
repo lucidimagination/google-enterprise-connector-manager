@@ -142,6 +142,8 @@ public interface ConnectorCoordinator {
    */
   public void restartConnectorTraversal() throws ConnectorNotFoundException;
 
+  public void stopTraversal() throws ConnectorNotFoundException;
+
   /**
    * Sets the {@link Schedule} for this {@link ConnectorCoordinator}. If this
    * {@link ConnectorCoordinator} supports persistence this will persist the
