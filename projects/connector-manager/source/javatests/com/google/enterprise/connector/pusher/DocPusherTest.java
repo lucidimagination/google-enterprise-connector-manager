@@ -2456,7 +2456,7 @@ public class DocPusherTest extends TestCase {
 
     FileSizeLimitInfo limit = new FileSizeLimitInfo();
     limit.setMaxDocumentSize(freeMemory/4);
-    limit.setMaxFeedSize(freeMemory/4);
+    limit.setMaxFeedSize(freeMemory/3);
 
     DocPusher dpusher = new DocPusher(feedConnection, "junit", limit, dfc);
     Map<String, Object> config = getTestDocumentConfig();

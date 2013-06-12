@@ -319,6 +319,11 @@ public class MockManager implements Manager {
   }
 
   /* @Override */
+  public void stopTraversal(String connectorName) {
+    // do nothing
+  }
+
+  /* @Override */
   public void removeConnector(String connectorName)
       throws ConnectorNotFoundException, PersistentStoreException {
     if (CONNECTOR2.equals(connectorName)) {

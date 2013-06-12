@@ -214,6 +214,14 @@ public class MockInstantiator implements Instantiator {
     return connectorMap.keySet();
   }
 
+  public void stopTraversal(String connectorName)
+      throws ConnectorNotFoundException {
+    ConnectorCoordinator cc = connectorMap.remove(connectorName);
+    if (cc != null) {
+      cc.stopTraversal();
+    }
+  }
+
   public void removeConnector(String connectorName) {
     ConnectorCoordinator cc = connectorMap.remove(connectorName);
     if (cc != null) {

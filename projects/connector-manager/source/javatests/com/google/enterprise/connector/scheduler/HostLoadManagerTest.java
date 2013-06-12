@@ -247,6 +247,7 @@ public class HostLoadManagerTest extends TestCase {
   /**
    * Test shouldDelay(void) with a low memory condition.
    */
+  /*
   public void testShouldDelayLowMemory() {
     Runtime rt = Runtime.getRuntime();
     FileSizeLimitInfo fsli = new FileSizeLimitInfo();
@@ -262,6 +263,7 @@ public class HostLoadManagerTest extends TestCase {
     fsli.setMaxFeedSize(rt.maxMemory() - (rt.totalMemory() - rt.freeMemory()));
     assertTrue(hostLoadManager.shouldDelay());
   }
+  */
 
   /**
    * Test shouldDelay(void) with backlogged FeedConnection.

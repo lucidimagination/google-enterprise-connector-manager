@@ -146,6 +146,10 @@ class MockConnectorCoordinator implements ConnectorCoordinator {
     }
   }
 
+  public void stopTraversal() {
+    cancelBatch();
+  }
+
   public synchronized void shutdown() {
     Connector connector = interfaces.getConnector();
     if (connector != null && (connector instanceof ConnectorShutdownAware)) {
