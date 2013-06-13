@@ -336,8 +336,6 @@ class ConnectorCoordinatorImpl implements
     return traversalSchedule;
   }
 
-  private volatile boolean stopped = false;
-
   // TODO Should we check if instance is running ?
   public void stopTraversal() throws ConnectorNotFoundException {
     if (instanceInfo != null
@@ -610,9 +608,6 @@ class ConnectorCoordinatorImpl implements
     if (taskHandle != null && !taskHandle.isDone()) {
       return false;
     }
-
-    // Do we have to stop right now ?
-    if (stopped) return false;
 
     // Don't run if we have postponed traversals.
     if (clock.getTimeMillis() < traversalDelayEnd) {
