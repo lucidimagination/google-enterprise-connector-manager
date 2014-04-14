@@ -51,4 +51,7 @@ public class SimpleDocument implements Document {
   public Set<String> getPropertyNames() {
     return properties.keySet();
   }
+  
+  public void release(){
+  }
 }

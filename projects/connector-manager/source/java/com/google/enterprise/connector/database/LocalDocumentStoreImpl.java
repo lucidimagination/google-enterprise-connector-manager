@@ -445,6 +445,9 @@ public class LocalDocumentStoreImpl implements DocumentStore {
   private class StoredDocument implements Document {
     private final ImmutableMap<String, String> properties;
 
+    public void release(){
+    }
+    
     public StoredDocument(ImmutableMap<String, String> properties) {
       this.properties = properties;
     }
@@ -711,4 +714,5 @@ public class LocalDocumentStoreImpl implements DocumentStore {
       close();
     }
   }
+
 }

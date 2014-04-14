@@ -78,4 +78,6 @@ public interface Document {
    *         processing errors
    */
   public Set<String> getPropertyNames() throws RepositoryException;
+  
+  public void release();
 }

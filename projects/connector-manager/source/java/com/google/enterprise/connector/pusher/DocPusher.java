@@ -163,6 +163,7 @@ public class DocPusher implements Pusher {
     // Initialize background feed submission.
     this.submissions = new LinkedList<FutureTask<String>>();
     this.feedSender = Executors.newSingleThreadExecutor();
+
   }
 
   /**
@@ -199,10 +200,7 @@ public class DocPusher implements Pusher {
       throw new IllegalStateException("Pusher is shut down");
     }
     checkSubmissions();
-
-    // Apply any configured Document filters to the document.
     document = documentFilterFactory.newDocumentFilter(document);
-
     String feedType;
     try {
       feedType = DocUtils.getFeedType(document);
@@ -310,6 +308,7 @@ public class DocPusher implements Pusher {
           }
         }
       }
+      document.release();
     }
   }
 

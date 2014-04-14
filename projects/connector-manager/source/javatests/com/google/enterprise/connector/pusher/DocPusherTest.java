@@ -2642,6 +2642,10 @@ public class DocPusherTest extends TestCase {
       baseDocument = document;
       badProperties = new HashMap<String, Class<? extends Throwable>>();
     }
+    
+    public void release(){
+        
+    }
 
     /**
      * Specify a property to fail and how to fail it.

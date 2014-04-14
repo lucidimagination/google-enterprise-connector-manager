@@ -349,6 +349,10 @@ public class QueryTraverser implements Traverser {
     private Document document;
     private Exception exception;
 
+    public void release(){
+        
+    }
+    
     SkippedDocument(Document document, Exception exception) {
       this.document = document;
       this.exception = exception;
