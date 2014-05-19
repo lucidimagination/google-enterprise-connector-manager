@@ -124,9 +124,6 @@ public abstract class AbstractDocumentFilter implements DocumentFilterFactory {
     /** The {@link Document} that acts as the source for this filter. */
     protected Document source;
 
-    public void release(){
-       
-    }
     /**
      * Constructs a {@link DocumentFilter} with the supplied {@code source}
      * Document.

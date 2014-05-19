@@ -35,10 +35,6 @@ public class JcrDocument implements Document {
   private Map<String, String> aliasedPropertyNames = null;
   private Property property;
 
-  public void release(){
-      
-  }
-  
   static {
     aliasMap = new HashMap<String, String>();
     aliasMap.put(SpiConstants.PROPNAME_DOCID, "jcr:uuid");

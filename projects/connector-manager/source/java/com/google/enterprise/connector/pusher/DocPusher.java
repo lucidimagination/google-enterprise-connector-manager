@@ -308,7 +308,6 @@ public class DocPusher implements Pusher {
           }
         }
       }
-      document.release();
     }
   }
 

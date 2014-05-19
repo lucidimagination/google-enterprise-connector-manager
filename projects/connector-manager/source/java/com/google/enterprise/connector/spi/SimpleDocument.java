@@ -52,6 +52,4 @@ public class SimpleDocument implements Document {
     return properties.keySet();
   }
   
-  public void release(){
-  }
 }
